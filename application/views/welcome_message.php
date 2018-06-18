@@ -81,10 +81,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	
-	<nav class="navbar navbar-light bg-light justify-content-between">
+	<nav class="navbar navbar-light bg-light justify-content-between ">
   <a class="navbar-brand">Inicio</a>
   <form class="form-inline">
   <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Login/inicio">Inicio</a>
+  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Login/Product">Productos</a>
 	<a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Login/iniciarSession">Login</a>
 
   </form>

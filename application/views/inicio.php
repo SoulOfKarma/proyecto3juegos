@@ -75,6 +75,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 	}
 
+	div.round3 {
+    border: 2px solid green;
+    border-radius: 12px;
+}
+
 	</style>
 </head>
 <body>
@@ -83,13 +88,90 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <div class="row">
   <div class="col-md-0">
   </div>
-  <div class="col-md-12">
-  <div class="owl-carousel">
+  <div class="col-md-12 round3" id="color" style="background-color: grey;">
+   <div class='carrusel_productos'>
+    <div class='titulo_carrousel'>
+    
+    </div>
+	<h2><a class='ArrowHome' href='<?= base_url() ?>index.php/Login/productoR'> Recien Agregados </a>
+  </h2>
+  <div id="owl-demo1" class="owl-carousel owl-theme galeria">
   <?php foreach($arrJuego as $juego) { ?>
-  <div class="item" style="width:250px"> <img src="<?= base_url() ?>fotos/thumbs/<?php echo $juego->linkfoto?>"></div>
-  <?php } ?>
-</div>
+   <div class="item" style="width:150px"> 
+	<a href="#" onclick="enviar(<?php echo $juego->idjuego ?>)">
+	<input type="hidden" name="idjuego" id="idjuego" value="<?php echo $juego->idjuego?>">
+     <img src="<?= base_url() ?>fotos/thumbs/<?php echo $juego->linkfoto?>" alt="" />
+     <p><?php echo $juego->nombrejuego?></p>
+    </a>
+  <div class='precios'>
+   <div class='precio_web'>
+    <div class='precio_monto'>
+     <p class='btn-fn-agregar'>
+      <span style='color:red;'>
+      $ <b><?php echo $juego->precioInternet?></b> (Internet)
+      </span>
+     </p>
+     <p style='color:#5c666f; font-size:14px;'>
+     $ <b style='font-size : 14px '><?php echo $juego->precioNormal?></b >
+      <span > (Normal)</span>
+     </p>
+     <div class='relleno'>
+     </div>
+    </div>
+   </div>
   </div>
+</div>
+<?php } ?>
+
+
+ </div>
+
+  <div class="col-md-0">
+  
+  
+  </div>
+  <div class="container">
+ <div class="row">
+  <div class="col-md-0">
+  </div>
+  <div class="col-md-12" id="color" style="background-color:white opacity:1;">
+   <div class='carrusel_productos'>
+    <div class='titulo_carrousel'>
+    
+    </div>
+	<h2><a class='ArrowHome' href='<?= base_url() ?>index.php/Login/productoG'> General </a>
+  </h2>
+  <div id="owl-demo1" class="owl-carousel owl-theme galeria">
+  <?php foreach($arrJuego as $juego) { ?>
+   <div class="item" style="width:150px"> 
+   <input type="hidden" name="idjuego" id="idjuego" value="<?php echo $juego->idjuego?>">
+    <a href="#" onclick="enviar(<?php echo $juego->idjuego ?>)">
+     <img src="<?= base_url() ?>fotos/thumbs/<?php echo $juego->linkfoto?>" alt="" />
+     <p><?php echo $juego->nombrejuego?></p>
+    </a>
+  <div class='precios'>
+   <div class='precio_web'>
+    <div class='precio_monto'>
+     <p class='btn-fn-agregar'>
+      <span style='color:red;'>
+      $ <b><?php echo $juego->precioInternet?></b> (Internet)
+      </span>
+     </p>
+     <p style='color:#5c666f; font-size:14px;'>
+     $ <b style='font-size : 14px '><?php echo $juego->precioNormal?></b >
+      <span > (Normal)</span>
+     </p>
+     <div class='relleno'>
+     </div>
+    </div>
+   </div>
+  </div>
+</div>
+<?php } ?>
+
+
+ </div>
+
   <div class="col-md-0">
   
   
@@ -110,6 +192,23 @@ $(document).ready(function(){
   );
   
 });
+function enviar(id) 
+{ 
+	
+	var form = document.createElement('form');
+    document.body.appendChild(form);
+    form.method = 'post';
+    form.action = "<?= base_url() ?>index.php/Login/productoS";
+    
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'idjuego';
+        input.value = id;
+	
+        form.appendChild(input);
 
+    form.submit();
+} 
 </script>
+
 </html>

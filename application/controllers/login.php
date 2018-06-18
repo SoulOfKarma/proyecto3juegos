@@ -101,5 +101,28 @@ class Login extends CI_Controller {
         ];
         $this->load->view('inicio',$data);
     }
+
+    public function productoS()
+	{
+        $this->load->model('login_model');
+        $id = $this->input->post('idjuego');
+        
+        $data= [
+            'arrJuego' => $this->login_model->getProducto($id)
+        ];
+        $this->load->view('productoS',$data);
+    }
+
+
+    public function product()
+	{
+        $this->load->model('login_model');
+        $id = $this->input->post('idjuego');
+        
+        $data= [
+            'arrJuego' => $this->login_model->getJuegos()
+        ];
+        $this->load->view('product',$data);
+    }
    
 }

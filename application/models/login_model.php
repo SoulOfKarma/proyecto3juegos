@@ -61,5 +61,20 @@ class Login_model extends CI_Model {
 
     }
 
+    public function getProducto($id)
+    {
+        $this->db->select('*');
+        $this->db->from('juego');
+        $this->db->join('empresa','juego.idEmpresa = empresa.idempresa');
+        $this->db->join('genero','juego.idgenero = genero.idgenero');
+        $this->db->join('plataforma','juego.idplataforma = plataforma.idplataforma');
+        $this->db->where('idjuego',$id);
+        $this->db->order_by('idjuego','desc');
+        $query = $this->db->get();
+        return $query->result();
+       
+
+    }
+
 
 }
