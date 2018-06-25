@@ -7,14 +7,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Login de Usuario</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="http://localhost/BLUEGEMGAMES/fotos/style.css"/>
-
+	
 	<style type="text/css">
 
 	::selection { background-color: #E13300; color: white; }
 	::-moz-selection { background-color: #E13300; color: white; }
 
 	body {
-		background-color: #fff;
+		background-color: #252525;
 		margin: 40px;
 		font: 13px/20px normal Helvetica, Arial, sans-serif;
 		color: #4F5155;
@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	p.footer {
 		text-align: right;
 		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
+		border-top: 1px solid #252525;
 		line-height: 32px;
 		padding: 0 10px 0 10px;
 		margin: 20px 0 0 0;
@@ -62,8 +62,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	#container {
 		margin: 10px;
-		border: 1px solid #D0D0D0;
-		box-shadow: 0 0 8px #D0D0D0;
+		border: 1px solid #252525;
+		box-shadow: 0 0 8px #252525;
 	}
 
 	#btnLog
@@ -80,37 +80,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<nav class="navbar navbar-light bg-light justify-content-between">
   <a class="navbar-brand">Bienvenido : <?php echo $_SESSION['user']?></a>
   <form class="form-inline">
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/Index">Inicio</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudG">Menu Genero</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudE">Menu Empresa</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudP">Menu Plataformas</a>
-	<a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/AgregarJuego">Agregar Juego Nuevo</a>
-    <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Index">Inicio</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudG">Menu Genero</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudE">Menu Empresa</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudP">Menu Plataformas</a>
+	<a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/AgregarJuego">Agregar Juego Nuevo</a>
+    <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
 
   </form>
 </nav>
 </div>
-<div class="container">
+<div class="container" >
  <div class="row">
   <div class="col-md-2">
   </div>
-  <div class="col-md-8">
+  <div class="col-md-8" >
   
-  <div id="formulario_imagenes" class="form-control">
+  <div id="formulario_imagenes" class="form-control " style="background-color: #252525;">
       
  
   <form action="<?php echo base_url();?>index.php/Admin/crudInsertEmpresa" method="post" >
-      <label>Empresa Juego Nuevo:</label><input type="text" placeholder="Ej. From Software,Activision" name="titulo" id="titulo" class="form-control"/><br><br>
-      <input type="submit" value="Insertar Empresa" name="enviar" id="enviar" class="form-control">
+      <label style='color:white; font-size:14px;'>Empresa Juego Nuevo:</label><input type="text" placeholder="Ej. From Software,Activision" name="titulo" id="titulo" class="form-control"/><br><br>
+      <input type="submit" value="Insertar Empresa" name="enviar" id="enviar" class="form-control btn-success">
       
 	  </form>
 </div>
 <br><br>
-<div id="formulario_imagenes" class="form-control">
+<div id="formulario_imagenes" class="form-control" style="background-color: #252525;">
       
  
 	  
-	  <table class="table ">
+	  <table class="table table-dark">
   <thead class="thead-dark ">
     <tr>
       <th scope="col">Codigo</th>
@@ -122,10 +122,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <tbody>
   <?php foreach($arrEmpresa as $juego) { ?>
     <tr>
-	  <th scope="row" class="bg-light"><?php echo $juego->idempresa ?></th>
-      <td class="bg-light"><?php echo $juego->des_emp ?></td>
-      <td class="bg-light"><input type="submit" value="Modificar" class="form-control bg-info" onclick="enviar(<?php echo $juego->idempresa ?>)"></td>
-	  <td class="bg-light"><input type="submit" value="Eliminar" class="form-control bg-info"  onclick="eliminar(<?php echo $juego->idempresa ?>)"></td>
+	  <th scope="row" style="background-color:#252525;"><?php echo $juego->idempresa ?></th>
+      <td style="background-color:#252525;"><?php echo $juego->des_emp ?></td>
+      <td style="background-color:#252525;"><input type="submit" value="Modificar" class="form-control btn-warning" onclick="enviar(<?php echo $juego->idempresa ?>)"></td>
+	  <td style="background-color:#252525;"><input type="submit" value="Eliminar" class="form-control btn-danger"  onclick="eliminar(<?php echo $juego->idempresa ?>)"></td>
 	  <?php } ?>
     </tr>
     

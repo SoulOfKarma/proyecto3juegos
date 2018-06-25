@@ -80,12 +80,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<nav class="navbar navbar-light bg-light justify-content-between">
   <a class="navbar-brand">Bienvenido : <?php echo $_SESSION['user']?></a>
   <form class="form-inline">
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/Index">Inicio</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudG">Menu Genero</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudE">Menu Empresa</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudP">Menu Plataformas</a>
-	<a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/AgregarJuego">Agregar Juego Nuevo</a>
-    <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Index">Inicio</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudG">Menu Genero</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudE">Menu Empresa</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudP">Menu Plataformas</a>
+	<a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/AgregarJuego">Agregar Juego Nuevo</a>
+    <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
 
   </form>
 </nav>
@@ -97,21 +97,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="col-md-8">
 	  
 
-  <div id="formulario_imagenes" class="form-control">
+  <div id="formulario_imagenes" class="form-control" style="background-color:#252525;">
       
  
   <form action="<?php echo base_url();?>index.php/Admin/crudInsertGenero" method="post" >
-      <label>Genero Nuevo:</label><input type="text" placeholder="Ej. Accion,RPG,Guerra" name="titulo" id="titulo" class="form-control"/><br><br>
-      <input type="submit" value="Insertar Genero" name="enviar" id="enviar" class="form-control">
+      <label style='color:white; font-size:14px;'>Genero Nuevo:</label><input type="text" placeholder="Ej. Accion,RPG,Guerra" name="titulo" id="titulo" class="form-control"/><br><br>
+      <input type="submit" value="Insertar Genero" name="enviar" id="enviar" class="form-control btn-success">
       
 	  </form>
 </div>
 <br><br>
-<div id="formulario_imagenes" class="form-control">
+<div id="formulario_imagenes" class="form-control" style="background-color:#252525;">
       
  
 	  
-	  <table class="table">
+	  <table class="table table-dark">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Codigo</th>
@@ -123,10 +123,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <tbody>
   <?php foreach($arrGenero as $juego) { ?>
     <tr>
-	  <th scope="row" class="bg-light"><?php echo $juego->idgenero ?></th>
-      <td class="bg-light"><?php echo $juego->descripcion ?></td>
-      <td class="bg-light"><input type="submit" value="Modificar" class="form-control bg-info" onclick="enviar(<?php echo $juego->idgenero ?>)"></td>
-	  <td class="bg-light"><input type="submit" value="Eliminar" class="form-control bg-info" onclick="eliminar(<?php echo $juego->idgenero ?>)"></td>
+	  <th scope="row" style="background-color:#252525;"><?php echo $juego->idgenero ?></th>
+      <td style="background-color:#252525;"><?php echo $juego->descripcion ?></td>
+      <td style="background-color:#252525;"><input type="submit" value="Modificar" class="form-control btn-warning" onclick="enviar(<?php echo $juego->idgenero ?>)"></td>
+	  <td style="background-color:#252525;"><input type="submit" value="Eliminar" class="form-control btn-danger" onclick="eliminar(<?php echo $juego->idgenero ?>)"></td>
 	  <?php } ?>
     </tr>
     

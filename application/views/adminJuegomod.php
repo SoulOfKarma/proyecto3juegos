@@ -96,37 +96,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
   <div class="col-md-8">
   
-  
-<div id="formulario_imagenes" class="form-control" style="background-color: #252525;">
-      
+  <?=@$error?>
+  <div id="formulario_imagenes" class="form-control" style="background-color: #252525;">
+      <span><?php echo validation_errors(); ?></span>
  
-	  <form action="<?php echo base_url()?>index.php/Admin/crudModificarPlataforma" method="post">
-	  <table class="table table-dark">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Codigo</th>
-      <th scope="col">Plataforma</th>
-      <th scope="col">Modificar</th>
+  <form action="<?php echo base_url();?>index.php/Admin/modificarJuego" method="post" enctype="multipart/form-data" >
+  <?php foreach($arrJuego as $juego) { ?>
+      <input type="hidden" name="idjuego" id="idjuego" value="<?php echo $juego->idjuego ?>">
+      <label style='color:white; font-size:14px;'>Nombre Juego:</label><input type="text" name="titulo" id="titulo" value="<?php echo $juego->nombrejuego ?>" class="form-control"/><br><br>
+      <label style='color:white; font-size:14px;'>Precio Normal(Tienda):</label><input type="text" name="precion" value="<?php echo $juego->precioNormal ?>" class="form-control"/><br><br>
+      <label style='color:white; font-size:14px;'>Precio Internet:</label><input type="text" name="precioi" value="<?php echo $juego->precioInternet ?>" class="form-control"/><br><br>
+      <label style='color:white; font-size:14px;'>Stock:</label><input type="text" name="stock" value="<?php echo $juego->stock ?>" class="form-control"/><br><br>
+      <?php } ?>
+      <select name="selEmpresa" id="selEmpresa" class="form-control">
+		  <?php foreach ($arrEmpresa as $i)
+		   echo '<option name="',$i->idempresa,'" id="',$i->idempresa,'" value="',$i->idempresa,'">',$i->des_emp,'</option>';
+         ?>
+             </select><br><br>
+             <select name="selGenero" id="selGenero" class="form-control">
+		  <?php foreach ($arrGenero as $a)
+		   echo '<option name="',$a->idgenero,'" id="',$a->idgenero,'" value="',$a->idgenero,'">',$a->descripcion,'</option>';
+         ?>
+             </select><br><br>
+             <select name="selPlataforma" id="selPlataforma" class="form-control">
+		  <?php foreach ($arrPlataforma as $c)
+		   echo '<option name="',$c->idplataforma,'" id="',$c->idplataforma,'" value="',$c->idplataforma,'">',$c->des_plat,'</option>';
+         ?>
+			 </select><br><br>
+      <label style='color:white; font-size:14px;'>Imagen:</label><input type="file" name="userfile" id="userfile" class="form-control"/><br /><br />
+	  <input type="hidden" name="userfile">
+      <input type="submit" value="Subir imágenes" class="form-control"/>
+	  </form>
 	  
-    </tr>
-  </thead>
-  <tbody>
-  <?php foreach($arrPlataforma as $juego) { ?>
-    <tr>
-      <th scope="row" style="background-color: #252525;"><?php echo $juego->idplataforma ?></th>
-      <input type="hidden" name="idemp" id="idemp" value="<?php echo $juego->idplataforma ?>">
-      <td style="background-color: #252525;"><input type="text" name="modEmp" id="modEmp" class="form-control " value="<?php echo $juego->des_plat ?>"></td>
-      <td style="background-color: #252525;"><input type="submit" value="Modificar" class="form-control btn-success"></td>
-	  
-	  <?php } ?>
-    </tr>
-    
-  </tbody>
-</table>
-</form>
-		  
-	</div>
-  
   </div>
   <div class="col-md-2">
   </div>
@@ -135,6 +136,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  </div>
 </div>
 </body>
-
-
 </html>

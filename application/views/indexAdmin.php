@@ -82,12 +82,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<nav class="navbar navbar-light bg-light justify-content-between">
   <a class="navbar-brand">Bienvenido : <?php echo $_SESSION['user']?></a>
   <form class="form-inline">
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/Index">Inicio</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudG">Menu Genero</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudE">Menu Empresa</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudP">Menu Plataformas</a>
-	<a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/AgregarJuego">Agregar Juego Nuevo</a>
-    <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Index">Inicio</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudG">Menu Genero</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudE">Menu Empresa</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudP">Menu Plataformas</a>
+	<a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/AgregarJuego">Agregar Juego Nuevo</a>
+    <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
 
   </form>
 </nav>
@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="col-md-0">
   </div>
   <div class="col-md-12">
-  <table class="table">
+  <table class="table table-dark">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Codigo Juego</th>
@@ -109,20 +109,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  <th scope="col">Genero</th>
 	  <th scope="col">Plataforma</th>
 	  <th scope="col">Stock</th>
+	  <th scope="col">Eliminar</th>
+	  <th scope="col">Modificar</th>
     </tr>
   </thead>
   <tbody>
   <?php foreach($arrJuego as $juego) { ?>
     <tr>
-	  <th scope="row" class="bg-light"><?php echo $juego->idjuego ?></th>
-	  <td class="bg-light"><img src="<?= base_url() ?>fotos/thumbs/<?php echo $juego->linkfoto?>"></td>
-      <td class="bg-light"><?php echo $juego->nombrejuego ?></td>
-      <td class="bg-light">$<?php echo $juego->precioNormal ?></td>
-	  <td class="bg-light">$<?php echo $juego->precioInternet ?></td>
-	  <td class="bg-light"><?php echo $juego->des_emp ?></td>
-	  <td class="bg-light"><?php echo $juego->descripcion ?></td>
-	  <td class="bg-light"><?php echo $juego->des_plat ?></td>
-	  <td class="bg-light"><?php echo $juego->stock ?></td>
+	  <th scope="row" style="background-color:#252525;"><?php echo $juego->idjuego ?></th>
+	  <td style="background-color:#252525;"><img src="<?= base_url() ?>fotos/thumbs/<?php echo $juego->linkfoto?>"></td>
+      <td style="background-color:#252525;" ><?php echo $juego->nombrejuego ?></td>
+      <td style="background-color:#252525;">$<?php echo $juego->precioNormal ?></td>
+	  <td style="background-color:#252525;">$<?php echo $juego->precioInternet ?></td>
+	  <td style="background-color:#252525;"><?php echo $juego->des_emp ?></td>
+	  <td style="background-color:#252525;"><?php echo $juego->descripcion ?></td>
+	  <td style="background-color:#252525;"><?php echo $juego->des_plat ?></td>
+	  <td style="background-color:#252525;"><?php echo $juego->stock ?></td>
+	  <td style="background-color:#252525;"><input type="submit" value="Modificar" class="form-control btn-warning" onclick="enviar(<?php echo $juego->idjuego ?>)"></td>
+	  <td style="background-color:#252525;"><input type="submit" value="Eliminar" class="form-control btn-danger"  onclick="eliminar(<?php echo $juego->idjuego ?>)"></td>
 	  <?php } ?>
     </tr>
     
@@ -138,4 +142,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
  </div>
 </body>
+<script type="text/javascript"> 
+function enviar(id) 
+{ 
+	
+	var form = document.createElement('form');
+    document.body.appendChild(form);
+    form.method = 'post';
+    form.action = "<?= base_url() ?>index.php/Admin/crudBuscarJuego";
+    
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'id';
+        input.value = id;
+	
+        form.appendChild(input);
+
+    form.submit();
+} 
+
+function eliminar(id) 
+{ 
+	
+	var form = document.createElement('form');
+    document.body.appendChild(form);
+    form.method = 'post';
+    form.action = "<?= base_url() ?>index.php/Admin/crudEJuego";
+
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'id';
+        input.value = id;
+	
+        form.appendChild(input);
+
+    form.submit();
+} 
+</script>
 </html>

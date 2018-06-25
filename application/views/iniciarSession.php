@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Login de Usuario</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="http://localhost/BLUEGEMGAMES/fotos/style.css"/>
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<style type="text/css">
 
 ::selection { background-color: #E13300; color: white; }
@@ -73,22 +73,22 @@ p.footer {
 	</style>
 </head>
 <body>
-<div id="container" name="loginfond">
+<div id="container" name="loginfond" style=" background-image: url('http://localhost/BLUEGEMGAMES/fotos/black.jpg') ;">
 
-	<h1 id="tlogin">Login de Usuarios</h1>
+	<h1 id="tlogin"><font color=white>Login de Usuarios</font></h1>
 
 	<div id="body">
-		<div class="container">
+		<div class="container" >
           <div class="row">
             <div class="col-md-2">
 
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-8" style=" background-image: url('http://localhost/BLUEGEMGAMES/fotos/black.jpg') ;">
 			
 				<form action="<?= base_url() ?>index.php/Login/Logearse" method="post">
-			   <label for="log">User: </label>
+			    <label for="log"><font color=white><i class="fas fa-address-card"></i> User: </font></label>
 				<input type="text" id="user" name="user" class="form-control" required="required"><br><br>
-				<label for="log">Pass: </label>
+				<label for="log"><font color=white><i class="fas fa-handshake"></i> Pass: </font></label>
 				<input type="password" id="pass" name="pass" class="form-control" required="required"><br><br>
 				<input type="submit" value="Ingresar" class="btn btn-success" id="ir">
 				</form>

@@ -80,12 +80,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<nav class="navbar navbar-light bg-light justify-content-between">
   <a class="navbar-brand">Bienvenido : <?php echo $_SESSION['user']?></a>
   <form class="form-inline">
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/Index">Inicio</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudG">Menu Genero</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudE">Menu Empresa</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudP">Menu Plataformas</a>
-	<a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/AgregarJuego">Agregar Juego Nuevo</a>
-    <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Index">Inicio</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudG">Menu Genero</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudE">Menu Empresa</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudP">Menu Plataformas</a>
+	<a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/AgregarJuego">Agregar Juego Nuevo</a>
+    <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
 
   </form>
 </nav>
@@ -97,11 +97,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="col-md-8">
   
   
-<div id="formulario_imagenes" class="form-control">
+<div id="formulario_imagenes" class="form-control" style="background-color: #252525;">
       
  
 	  <form action="<?php echo base_url()?>index.php/Admin/crudModificarEmpresa" method="post">
-	  <table class="table">
+	  <table class="table table-dark">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Codigo</th>
@@ -113,10 +113,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <tbody>
   <?php foreach($arrEmpresa as $juego) { ?>
     <tr>
-      <th scope="row" class="bg-light"><?php echo $juego->idempresa ?></th>
+      <th scope="row" style="background-color: #252525;"><?php echo $juego->idempresa ?></th>
       <input type="hidden" name="idemp" id="idemp" value="<?php echo $juego->idempresa ?>">
-      <td class="bg-light"><input type="text" name="modEmp" id="modEmp" value="<?php echo $juego->des_emp ?>"></td>
-      <td class="bg-light"><input type="submit" value="Modificar" class="form-control bg-info"></td>
+      <td style="background-color: #252525;"><input type="text" name="modEmp" id="modEmp" value="<?php echo $juego->des_emp ?>"></td>
+      <td style="background-color: #252525;"><input type="submit" value="Modificar" class="form-control btn-success"></td>
 	  
 	  <?php } ?>
     </tr>

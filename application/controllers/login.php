@@ -57,7 +57,9 @@ class Login extends CI_Controller {
                 {
                     $newdata=array(
                         'user'=>$_POST['user'],
-                        'pass'=>$_POST['pass']
+                        'pass'=>$_POST['pass'],
+                       
+
                     );
                     $this->session->set_userdata($newdata);
                     redirect('admin');
@@ -66,8 +68,10 @@ class Login extends CI_Controller {
                 {
                     $newdata=array(
                         'user'=>$_POST['user'],
-                        'pass'=>$_POST['pass']
+                        'pass'=>$_POST['pass'],
+                       
                     );
+                    
                     $this->session->set_userdata($newdata);
                     redirect('cliente');
                 }
@@ -120,7 +124,52 @@ class Login extends CI_Controller {
         $id = $this->input->post('idjuego');
         
         $data= [
-            'arrJuego' => $this->login_model->getJuegos()
+            'arrJuego' => $this->login_model->getJuegos(),
+            'arrGenero' => $this->login_model->getGenero(),
+            'arrPlataforma' => $this->login_model->getPlataforma(),
+            'arrEmpresa' => $this->login_model->getEmpresa()
+        ];
+        $this->load->view('product',$data);
+    }
+
+    public function filtrarPorBusquedagenero()
+	{
+        $this->load->model('login_model');
+        $id = $this->input->post('id');
+        
+        $data= [
+            'arrJuego' => $this->login_model->getJuegosFilGen($id),
+            'arrGenero' => $this->login_model->getGenero(),
+            'arrPlataforma' => $this->login_model->getPlataforma(),
+            'arrEmpresa' => $this->login_model->getEmpresa()
+        ];
+        $this->load->view('product',$data);
+    }
+
+    public function filtrarPorBusquedaPlataforma()
+	{
+        $this->load->model('login_model');
+        $id = $this->input->post('id');
+        
+        $data= [
+            'arrJuego' => $this->login_model->getJuegosFilPlat($id),
+            'arrGenero' => $this->login_model->getGenero(),
+            'arrPlataforma' => $this->login_model->getPlataforma(),
+            'arrEmpresa' => $this->login_model->getEmpresa()
+        ];
+        $this->load->view('product',$data);
+    }
+
+    public function filtrarPorBusquedaEmpresa()
+	{
+        $this->load->model('login_model');
+        $id = $this->input->post('id');
+        
+        $data= [
+            'arrJuego' => $this->login_model->getJuegosFilEmp($id),
+            'arrGenero' => $this->login_model->getGenero(),
+            'arrPlataforma' => $this->login_model->getPlataforma(),
+            'arrEmpresa' => $this->login_model->getEmpresa()
         ];
         $this->load->view('product',$data);
     }

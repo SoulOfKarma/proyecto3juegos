@@ -31,6 +31,8 @@ class Admin extends CI_Controller {
            // redirect('indexAdmin',$data);
            $this->load->view('indexAdmin',$data);
           //redirect('login');
+           
+
         }
         else
         {
@@ -543,6 +545,143 @@ class Admin extends CI_Controller {
             'arrPlataforma' =>$this->admin_model->getPlataforma()
         ];
            $this->load->view('adminCrudPlataforma',$dataa);
+          //redirect('login');
+        }
+        else
+        {
+            
+            redirect('login');
+        }
+    }
+
+    public function crudEJuego()
+    {
+        $user = $this->session->user;
+        $pass = $this->session->pass;
+        
+        if(isset($user)&&!empty($user)&&isset($pass)&&!empty($pass))
+        {
+            
+            $this->load->model('admin_model');
+            // redirect('indexAdmin',$data);
+            $data2 = $this->input->post('id');
+           
+            $this->admin_model->eliminarJuego($data2);
+            
+           // redirect('indexAdmin',$data);
+           $data= [
+            'arrJuego' => $this->admin_model->getJuegos()
+        ];
+        
+           $this->load->view('indexAdmin',$data);
+          //redirect('login');
+        }
+        else
+        {
+            
+            redirect('login');
+        }
+    }
+
+    public function crudBuscarJuego()
+    {
+        $user = $this->session->user;
+        $pass = $this->session->pass;
+        
+        if(isset($user)&&!empty($user)&&isset($pass)&&!empty($pass))
+        {
+            
+            $this->load->model('admin_model');
+            // redirect('indexAdmin',$data);
+            $data2 = $this->input->post('id');
+           
+           
+            
+           // redirect('indexAdmin',$data);
+           $dataa= [
+            'arrJuego' =>$this->admin_model->buscarJuego($data2),
+            'arrEmpresa' =>$this->admin_model->getEmpresa(),
+            'arrPlataforma' =>$this->admin_model->getPlataforma(),
+            'arrGenero' =>$this->admin_model->getGenero()
+
+        ];
+           $this->load->view('adminJuegomod',$dataa);
+          //redirect('login');
+        }
+        else
+        {
+            
+            redirect('login');
+        }
+    }
+
+    public function ModificarJuego()
+    {
+        $user = $this->session->user;
+        $pass = $this->session->pass;
+        
+        if(isset($user)&&!empty($user)&&isset($pass)&&!empty($pass))
+        {
+            
+            $this->load->library('form_validation');
+            $this->load->helper('string');
+            $this->load->model('admin_model');
+            
+           
+          /* $config['upload_path'] = './fotos/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '2048';
+            $config['max_width'] = '2024';
+            $config['max_height'] = '2008';
+     
+            $this->load->library('upload',$config);*/
+            $ram = random_string('alnum', 16);
+            $file_name = $_FILES['userfile']['name'];
+            $tmp = explode('.', $file_name);
+            $extension_img = end($tmp);
+    
+            $user_img_profile =$ram .'.' . $extension_img;
+    
+            $config['upload_path'] = './fotos/';
+    //              'allowed_types' => "gif|jpg|jpeg|png|iso|dmg|zip|rar|doc|docx|xls|xlsx|ppt|pptx|csv|ods|odt|odp|pdf|rtf|sxc|sxi|txt|exe|avi|mpeg|mp3|mp4|3gp",
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = '5000000';
+            $config['quality'] = '90%';
+            $config['file_name'] = $user_img_profile;
+            $this->load->library('upload', $config);
+            
+            //SI LA IMAGEN FALLA AL SUBIR MOSTRAMOS EL ERROR EN LA VISTA UPLOAD_VIEW
+            if (!$this->upload->do_upload("userfile")) {
+               
+                $error['error'] = $this->upload->display_errors();
+                $this->load->view('upload_view', $error);
+            }else{
+            //EN OTRO CASO SUBIMOS LA IMAGEN, CREAMOS LA MINIATURA Y HACEMOS 
+            //ENVÍAMOS LOS DATOS AL MODELO PARA HACER LA INSERCIÓN
+                $file_info = $this->upload->data();
+                //USAMOS LA FUNCIÓN create_thumbnail Y LE PASAMOS EL NOMBRE DE LA IMAGEN,
+                //ASÍ YA TENEMOS LA IMAGEN REDIMENSIONADA
+    
+                $this->_create_thumbnail($user_img_profile);
+               // $data = array('upload_data' => $this->admin->data());
+                $titulo = $this->input->post('titulo');
+                $precion = $this->input->post('precion');
+                $precioi = $this->input->post('precioi');
+                $stock = $this->input->post('stock');
+                $idemp = $this->input->post('selEmpresa');
+                $idgen = $this->input->post('selGenero');
+                $idpla = $this->input->post('selPlataforma');
+                $id = $this->input->post('idjuego');
+                $imagen = $user_img_profile;
+               
+                $subir = $this->admin_model->modJuego($id,$titulo,$imagen,$precion,$precioi,$stock,$idemp,$idgen,$idpla);      
+                $data= [
+                    'arrJuego' => $this->admin_model->getJuegos()
+                ];
+                $this->load->view('indexAdmin', $data);
+            
+            }
+           
           //redirect('login');
         }
         else

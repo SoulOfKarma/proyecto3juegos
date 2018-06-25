@@ -177,5 +177,38 @@ class Admin_model extends CI_Model {
        
     }
 
+    public function eliminarJuego($data)
+    {
+        $this->db->where('idjuego',$data);
+       $query = $this->db->delete('juego');
+       
+    }
+
+    public function buscarJuego($data)
+    {
+        $this->db->where('idjuego',$data);
+       $query = $this->db->get('juego');
+       return $query->result();
+    }
+
+    public function modJuego($id,$titulo,$imagen,$precion,$precioi,$stock,$idemp,$idgen,$idpla)
+    {
+        $datas = array(
+            'nombrejuego' => $titulo,
+            'precioNormal' => $precion,
+            'precioInternet' => $precioi,
+            'idEmpresa' => $idemp,
+            'linkfoto' => $imagen,
+            'idgenero' => $idgen,
+            'idplataforma' => $idpla,
+            'stock' => $stock,
+    );
+    
+    $this->db->where('idjuego', $id);
+    $this->db->update('juego', $datas);
+           
+        return true;
+    }
+
 
 }

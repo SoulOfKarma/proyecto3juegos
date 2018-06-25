@@ -80,12 +80,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<nav class="navbar navbar-light bg-light justify-content-between">
   <a class="navbar-brand">Bienvenido : <?php echo $_SESSION['user']?></a>
   <form class="form-inline">
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/Index">Inicio</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudG">Menu Genero</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudE">Menu Empresa</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/CrudP">Menu Plataformas</a>
-	<a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/AgregarJuego">Agregar Juego Nuevo</a>
-    <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Index">Inicio</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudG">Menu Genero</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudE">Menu Empresa</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/CrudP">Menu Plataformas</a>
+	<a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/AgregarJuego">Agregar Juego Nuevo</a>
+    <a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
 
   </form>
 </nav>
@@ -97,14 +97,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="col-md-8">
   
   <?=@$error?>
-  <div id="formulario_imagenes" class="form-control">
+  <div id="formulario_imagenes" class="form-control" style="background-color:#252525;">
       <span><?php echo validation_errors(); ?></span>
  
   <form action="<?php echo base_url();?>index.php/Admin/do_upload" method="post" enctype="multipart/form-data" >
-      <label>Nombre Juego:</label><input type="text" name="titulo" id="titulo" class="form-control"/><br><br>
-      <label>Precio Normal(Tienda):</label><input type="text" name="precion" class="form-control"/><br><br>
-      <label>Precio Internet:</label><input type="text" name="precioi" class="form-control"/><br><br>
-      <label>Stock:</label><input type="text" name="stock" class="form-control"/><br><br>
+      <label style='color:white; font-size:14px;'>Nombre Juego:</label><input type="text" name="titulo" id="titulo" class="form-control"/><br><br>
+      <label style='color:white; font-size:14px;'>Precio Normal(Tienda):</label><input type="text" name="precion" class="form-control"/><br><br>
+      <label style='color:white; font-size:14px;'>Precio Internet:</label><input type="text" name="precioi" class="form-control"/><br><br>
+      <label style='color:white; font-size:14px;'>Stock:</label><input type="text" name="stock" class="form-control"/><br><br>
       <select name="selEmpresa" id="selEmpresa" class="form-control">
 		  <?php foreach ($arrEmpresa as $i)
 		   echo '<option name="',$i->idempresa,'" id="',$i->idempresa,'" value="',$i->idempresa,'">',$i->des_emp,'</option>';
@@ -120,9 +120,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		   echo '<option name="',$c->idplataforma,'" id="',$c->idplataforma,'" value="',$c->idplataforma,'">',$c->des_plat,'</option>';
          ?>
 			 </select><br><br>
-      <label>Imagen:</label><input type="file" name="userfile" id="userfile" class="form-control"/><br /><br />
+      <label style='color:white; font-size:14px;'>Imagen:</label><input type="file" name="userfile" id="userfile" class="form-control"/><br /><br />
 	  <input type="hidden" name="userfile">
-      <input type="submit" value="Subir imágenes" class="form-control"/>
+      <input type="submit" value="Subir imágenes" class="form-control btn-success"/>
 	  </form>
 	  
   </div>

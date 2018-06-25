@@ -5,8 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<meta charset="utf-8">
 	<title>Login de Usuario</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="http://localhost/BLUEGEMGAMES/fotos/style.css"/>
+    <link rel="stylesheet" type="text/css" href="http://localhost/BLUEGEMGAMES/fotos/style.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>Owl/owl.carousel.min.css"/>
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>Owl/owl.theme.default.min.css"/>
@@ -66,8 +68,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	#container {
 		margin: 10px;
-		border: 1px solid #252525;
-		box-shadow: 0 0 8px #252525;
+		border: 1px solid #D0D0D0;
+		box-shadow: 0 0 8px #D0D0D0;
 	}
 
 	#btnLog
@@ -83,7 +85,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body>
+<div id="container">
 
+<nav class="navbar navbar-light bg-light justify-content-between">
+<a class="navbar-brand">Bienvenido : <?php echo $_SESSION['user']?></a>
+<form class="form-inline">
+<a class="btn btn-light" href="<?= base_url() ?>index.php/Cliente/Index">Inicio</a>
+<a class="btn btn-light" href="<?= base_url() ?>index.php/Cliente/productoCliente">Producto</a>
+<a class="btn btn-light" href="<?= base_url() ?>index.php/Cliente/Carrito">Carrito</a>
+<a class="btn btn-light" href="<?= base_url() ?>index.php/Cliente/ProductoVendido">Listado Compras Realizadas</a>
+<a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
+<a class="btn btn-light" href="<?= base_url() ?>index.php/Cliente/Carrito"><i class="fas fa-archive"></i> Productos en Carrito: <?php echo $contador ?></a>
+</form>
+</nav>
+</div>
 <div class="container">
  <div class="row">
   <div class="col-md-0">
@@ -93,7 +108,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class='titulo_carrousel'>
     
     </div>
-	<h2><a class='ArrowHome' href='<?= base_url() ?>index.php/Login/Product'><label name="title" id="title" style='color:white; font-size:50px font-family:ACID LABEL__' > Recien Agregados</p> </a>
+	<h2><a class='ArrowHome' href='<?= base_url() ?>index.php/Cliente/productoCliente'><label name="title" id="title" style='color:white; font-size:50px font-family:ACID LABEL__' > Recien Agregados</p> </a>
   </h2>
   <div id="owl-demo1" class="owl-carousel owl-theme galeria">
   <?php foreach($arrJuego as $juego) { ?>
@@ -107,7 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div class='precio_web'>
     <div class='precio_monto'>
      <p class='btn-fn-agregar'>
-      <span style='color:red;font-size : 14px;'>
+      <span style='color:red ; font-size : 14px ;'>
       $ <b><?php echo $juego->precioInternet?></b> (Internet)
       </span>
      </p>
@@ -139,7 +154,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class='titulo_carrousel'>
     
     </div>
-	<h2><a class='ArrowHome' href='<?= base_url() ?>index.php/Login/product'><label name="title" id="title" style='color:white; font-size:50px font-family:ACID LABEL__' > General</p> </a>
+	<h2><a class='ArrowHome' href='<?= base_url() ?>index.php/Cliente/productoCliente'><label name="title" id="title" style='color:white; font-size:50px font-family:ACID LABEL__' > General</p></a>
   </h2>
   <div id="owl-demo1" class="owl-carousel owl-theme galeria">
   <?php foreach($arrJuego as $juego) { ?>
@@ -198,7 +213,7 @@ function enviar(id)
 	var form = document.createElement('form');
     document.body.appendChild(form);
     form.method = 'post';
-    form.action = "<?= base_url() ?>index.php/Login/productoS";
+    form.action = "<?= base_url() ?>index.php/Cliente/productoEspecifico";
     
         var input = document.createElement('input');
         input.type = 'hidden';

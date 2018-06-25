@@ -6,8 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Login de Usuario</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="http://localhost/BLUEGEMGAMES/fotos/style.css"/>
-
+	<link rel="stylesheet" type="text/css" href="http://localhost/BLUEGEMGAMES/fotos/style.css"/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>Owl/owl.carousel.min.css"/>
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>Owl/owl.theme.default.min.css"/>
 <script src="<?= base_url() ?>Owl/jquery.min.js"></script>
@@ -66,8 +66,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	#container {
 		margin: 10px;
-		border: 1px solid #252525;
-		box-shadow: 0 0 8px #252525;
+		border: 1px solid #D0D0D0;
+		box-shadow: 0 0 8px #D0D0D0;
 	}
 
 	#btnLog
@@ -79,39 +79,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
+<div id="container">
+
+<nav class="navbar navbar-light bg-light justify-content-between">
+<a class="navbar-brand">Bienvenido : <?php echo $_SESSION['user']?></a>
+<form class="form-inline">
+<a class="btn btn-light" href="<?= base_url() ?>index.php/Cliente/Index">Inicio</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Cliente/productoCliente">Producto</a>
+    <a class="btn btn-light" href="<?= base_url() ?>index.php/Cliente/Carrito">Carrito</a>
+    <a class="btn btn-light" href="<?= base_url() ?>index.php/Cliente/ProductoVendido">Listado Compras Realizadas</a>
+	<a class="btn btn-light" href="<?= base_url() ?>index.php/Admin/Logout">Logout</a>
+	<a class="btn btn-light" href="<?= base_url() ?>index.php/Cliente/Carrito"><i class="fas fa-archive"></i> Productos en Carrito: <?php echo $contador ?></a>
+</form>
+</nav>
+</div>
+
 <div class="container">
- <div class="row">
-  <div class="col-md-12" style="background-color: #252525;">
-  <table class="table table-dark">
+	<div class="row">
+		<div class="col-md-0">
+
+		</div>
+		<div class="col-md-12">
+            <br><br>
+		<td class="bg-light"></td>
+		<table class="table table-dark">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Codigo</th>
-      <th scope="col">Imagen</th>
+      <th scope="col">Codigo Venta</th>
       <th scope="col">Nombre Juego</th>
-      <th scope="col">Precio Normal</th>
-	  <th scope="col">Precio Internet</th>
+      <th scope="col">Precio Juego</th>
     </tr>
   </thead>
   <tbody>
   <?php foreach($arrJuego as $juego) { ?>
     <tr>
-      <th scope="row" style="background-color:#252525;"><?php echo $juego->idjuego ?></th>
-      <td style="background-color:#252525;"><img src="<?= base_url() ?>fotos/thumbs/<?php echo $juego->linkfoto?>" alt="" /></td>
-      <td style="background-color:#252525;"><?php echo $juego->nombrejuego ?></td>
-      <td style="background-color:#252525;">$<?php echo $juego->precioNormal ?></td>
-	  <td style="background-color:#252525;">$<?php echo $juego->precioInternet ?></td>
-	  <td style="background-color:#252525;"><h4>Para Comprar, Debe Loguearse</h4></td>
+	  <th scope="row" style=" background-color:#252525 ; "><?php echo $juego->codigoventa ?></th>
+      <td style=" background-color:#252525 ; "><?php echo $juego->nombre_producto ?></td>
+      <td style=" background-color:#252525 ; ">$<?php echo $juego->precio ?></td>
+     
 	  <?php } ?>
     </tr>
     
   </tbody>
 </table>
-  </div>
- </div>
+<br><br><br>
+<center>
+<img src="<?= base_url() ?>fotos/gracias2.png" alt="" /><br><br><br>
+  </center>
+		</div>
+		<div class="col-md-0">
+			
+		</div>
+	</div>
 </div>
 
-
- 
 </body>
 
 </html>

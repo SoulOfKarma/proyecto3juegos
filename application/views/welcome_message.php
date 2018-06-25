@@ -66,8 +66,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	#container {
 		margin: 10px;
-		border: 1px solid #D0D0D0;
-		box-shadow: 0 0 8px #D0D0D0;
+		border: 1px solid #252525;
+		box-shadow: 0 0 8px #252525;
 	}
 
 	#btnLog
@@ -84,9 +84,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<nav class="navbar navbar-light bg-light justify-content-between ">
   <a class="navbar-brand">Inicio</a>
   <form class="form-inline">
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Login/inicio">Inicio</a>
-  <a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Login/Product">Productos</a>
-	<a class="btn btn-outline-success" href="<?= base_url() ?>index.php/Login/iniciarSession">Login</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Login/inicio">Inicio</a>
+  <a class="btn btn-light" href="<?= base_url() ?>index.php/Login/Product">Productos</a>
+	<a class="btn btn-light" href="<?= base_url() ?>index.php/Login/iniciarSession">Login</a>
 
   </form>
 </nav>
